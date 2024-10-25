@@ -42,23 +42,16 @@ Then, execute the command: `npm run exec`
     |   |   +-- playwright.yml
     
     +-- pages/
-    |   +-- pageFactory.ts
-    |   +-- header/
-    |   |   +-- header.page.ts
-    |   +-- login/
-    |   |   +-- login.page.ts
+    |   +-- resultsPage.js
+    |   +-- searchPage.js
     
     +-- tests/
-    |   +-- testBase.ts
-    |   +-- logInTests/
-    |   |   +-- login.test.ts
+    |   +-- test1.spec.js
+    |   +-- test2.spec.js
+    |   +-- test3.spec.js
     
     +-- utils/
-    |   +-- global.setup.ts
-    |   +-- global.teardown.ts
-    
-    +-- tests-data/
-    |   +-- testsdata.json
+    |   +-- requestsManager.js
     
     +-- test-results/
     
@@ -67,6 +60,8 @@ Then, execute the command: `npm run exec`
     +-- package.json
     +-- playwright.config.ts
     +-- README.md
+    +-- QA - TestCases.pdf
+    +-- Improvements.txt
 
 ## Configuration
 `playwright.config.ts` ➡️ This file is important for the configuration in order to set up the driver properly.
