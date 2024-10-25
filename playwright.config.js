@@ -11,7 +11,10 @@ module.exports = defineConfig({
   use: {
     baseURL: 'https://start.duckduckgo.com/',
     trace: 'retain-on-failure',
-    video: 'retain-on-failure'
+    video: 'retain-on-failure',
+    headless: false,
+    actionTimeout: 10000,
+    viewport: { width: 1280, height: 720 }
   },
 
   /* Configure projects for major browsers */
