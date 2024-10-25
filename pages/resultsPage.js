@@ -4,11 +4,11 @@ export default class ResultsPage {
     constructor(page){
         this.page = page;
         this.resultLinks = page.locator('h2 > a > span');
+        this.allRegionsDropdown = page.locator('[data-testid="region-filter-label"]');
+        this.regionOptions = page.locator('//div[@data-testid=\'dropdown-options\']/div[2]/div');
     }
 
     async getResultLinks(){
-
-        await this.page.waitForLoadState('load');
 
         const elements = await this.resultLinks;
         let links = new Array();
@@ -18,5 +18,13 @@ export default class ResultsPage {
         }
 
         return links;
+    }
+
+    async clickAllRegions(){
+        this.allRegionsDropdown.click();
+    }
+
+    async getAllRegions(){
+        return await this.regionOptions.count();
     }
 }
