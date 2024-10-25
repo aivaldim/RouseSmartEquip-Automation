@@ -4,7 +4,8 @@ export default class ResultsPage {
     constructor(page){
         this.page = page;
         this.resultLinks = page.locator('h2 > a > span');
-        this.allRegions = page.locator('[data-testid="region-filter-label"]');
+        this.allRegionsDropdown = page.locator('[data-testid="region-filter-label"]');
+        this.regionOptions = page.locator('//div[@data-testid=\'dropdown-options\']/div[2]/div');
     }
 
     async getResultLinks(){
@@ -20,6 +21,10 @@ export default class ResultsPage {
     }
 
     async clickAllRegions(){
-        this.allRegions.click();
+        this.allRegionsDropdown.click();
+    }
+
+    async getAllRegions(){
+        return await this.regionOptions.count();
     }
 }
