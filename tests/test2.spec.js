@@ -1,15 +1,23 @@
 const { test, expect } = require("@playwright/test");
-import ResultsPage from "../pages/resultsPage";
-import SearchPage from "../pages/searchPage";
+import PagesFactory from "../pages/pagesFactory";
 
 test.describe("Test 2", () => {
-    test('Validate regions amount', async ({ page }) => {
-        const searchPage = new SearchPage(page);
-        const resultsPage = new ResultsPage(page);
 
-        const textToSearch = 'Android';
-        
+    let pagesFactory;
+    let searchPage;
+    let resultsPage;
+
+    test.beforeEach(async ({ page }) => {
+        pagesFactory = new PagesFactory(page);
+        searchPage = pagesFactory.getSearchPage();
+        resultsPage = pagesFactory.getResultsPage();
+
         await page.goto('/');
+        await page.waitForLoadState('load');
+    });
+
+    test('Validate regions amount', async () => {
+        const textToSearch = 'Android';
         
         await searchPage.enterTextToSearch(textToSearch);
 

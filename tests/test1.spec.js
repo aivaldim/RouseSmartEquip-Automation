@@ -1,16 +1,24 @@
 const { test, expect } = require("@playwright/test");
-import ResultsPage from "../pages/resultsPage";
-import SearchPage from "../pages/searchPage";
+import PagesFactory from "../pages/pagesFactory";
 
-test.describe("Test 1", () => {
-    test('Search "Android" successfully', async ({ page }) => {
-        const searchPage = new SearchPage(page);
-        const resultsPage = new ResultsPage(page);
+test.describe('Test 1', () => {
 
-        const textToSearch = 'Android';
-        
+    let pagesFactory;
+    let searchPage;
+    let resultsPage;
+
+    test.beforeEach(async ({ page }) => {
+        pagesFactory = new PagesFactory(page);
+        searchPage = pagesFactory.getSearchPage();
+        resultsPage = pagesFactory.getResultsPage();
+
         await page.goto('/');
-        
+        await page.waitForLoadState('load');
+    });
+
+    test('Search "Android" successfully', async () => {
+        const textToSearch = 'Android';
+    
         await searchPage.enterTextToSearch(textToSearch);
 
         let links = await resultsPage.getResultLinks();
