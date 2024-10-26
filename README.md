@@ -8,7 +8,7 @@
   - Debian 11, Debian 12, Ubuntu 20.04, or Ubuntu 22.04, with x86-64 or arm64 architecture.
 
 ## Installation
-To install Playwright for the first time, run:
+To install this Playwright project for the first time, run:
 
 ➡️ npm install
 
