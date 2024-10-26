@@ -19,11 +19,11 @@ test.describe("Test 3", () => {
         //console.log(responseJSON.RelatedTopics[3].Icon);
         //console.log(responseJSON.RelatedTopics[4].Icon);
 
-        for(let i = 0; i < responseJSON.RelatedTopics.length; i++){
-            const iconURL = responseJSON.RelatedTopics[i].Icon?.URL;
-            if(iconURL){
+        for(const relatedTopic of responseJSON.RelatedTopics){
+            const iconURL = relatedTopic.Icon?.URL;
+            if (iconURL) {
                 console.log('Icon: ');
-                console.log(responseJSON.RelatedTopics[i].Icon);
+                console.log(relatedTopic.Icon);
             }
         }
     });
