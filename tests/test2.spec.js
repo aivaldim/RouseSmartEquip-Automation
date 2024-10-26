@@ -1,5 +1,7 @@
 const { test, expect } = require("@playwright/test");
+const tests_data = require('../constants/tests-data/tests-data');
 import PagesFactory from "../pages/pagesFactory";
+import CommonMethods from "../utils/commonMethods";
 
 test.describe("Test 2", () => {
 
@@ -8,18 +10,18 @@ test.describe("Test 2", () => {
     let resultsPage;
 
     test.beforeEach(async ({ page }) => {
+        const commonMethods = new CommonMethods(page);
         pagesFactory = new PagesFactory(page);
+
         searchPage = pagesFactory.getSearchPage();
         resultsPage = pagesFactory.getResultsPage();
 
-        await page.goto('/');
-        await page.waitForLoadState('load');
+        commonMethods.goToBaseURL();
     });
 
     test('Validate regions amount', async () => {
-        const textToSearch = 'Android';
         
-        await searchPage.enterTextToSearch(textToSearch);
+        await searchPage.enterTextToSearch(tests_data.test2.textToSearch);
 
         await resultsPage.clickAllRegions();
 

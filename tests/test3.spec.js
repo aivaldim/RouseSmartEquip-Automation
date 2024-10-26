@@ -1,11 +1,14 @@
 const { test, expect } = require("@playwright/test");
 import RequestsManager from "../utils/requestsManager";
+const tests_data = require('../constants/tests-data/tests-data');
 
 test.describe("Test 3", () => {
     test('API Test', async ({ request }) => {
         const requestManager = new RequestsManager(request);
 
-        const response = await requestManager.searchRequestGET('simpsons', 'json');
+        const response = await requestManager.searchRequestGET(
+            tests_data.test3.q,
+            tests_data.test3.format);
 
         expect(response.status()).toBe(200);
         expect(response).toBeTruthy();
