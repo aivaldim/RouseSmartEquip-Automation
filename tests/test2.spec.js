@@ -1,5 +1,6 @@
 const { test, expect } = require("@playwright/test");
 import PagesFactory from "../pages/pagesFactory";
+const tests_data = require('../constants/tests-data/tests-data');
 
 test.describe("Test 2", () => {
 
@@ -17,9 +18,8 @@ test.describe("Test 2", () => {
     });
 
     test('Validate regions amount', async () => {
-        const textToSearch = 'Android';
         
-        await searchPage.enterTextToSearch(textToSearch);
+        await searchPage.enterTextToSearch(tests_data.test2.textToSearch);
 
         await resultsPage.clickAllRegions();
 

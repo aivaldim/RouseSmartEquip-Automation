@@ -1,11 +1,12 @@
+const results_page_selectors = require('../constants/selectors/results-page-selectors');
 
 export default class ResultsPage {
 
     constructor(page){
         this.page = page;
-        this.resultLinks = page.locator('h2 > a > span');
-        this.allRegionsDropdown = page.locator('[data-testid="region-filter-label"]');
-        this.regionOptions = page.locator('//div[@data-testid=\'dropdown-options\']/div[2]/div');
+        this.resultLinks = page.locator(results_page_selectors.resutltsLinks);
+        this.allRegionsDropdown = page.locator(results_page_selectors.allRegionsDropdown);
+        this.regionOptions = page.locator(results_page_selectors.regionOptions);
     }
 
     async getResultLinks(){

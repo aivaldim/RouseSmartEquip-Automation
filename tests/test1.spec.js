@@ -1,5 +1,6 @@
 const { test, expect } = require("@playwright/test");
 import PagesFactory from "../pages/pagesFactory";
+const tests_data = require('../constants/tests-data/tests-data');
 
 test.describe('Test 1', () => {
 
@@ -17,14 +18,13 @@ test.describe('Test 1', () => {
     });
 
     test('Search "Android" successfully', async () => {
-        const textToSearch = 'Android';
     
-        await searchPage.enterTextToSearch(textToSearch);
+        await searchPage.enterTextToSearch(tests_data.test1.textToSearch);
 
         let links = await resultsPage.getResultLinks();
         
         links.forEach(element => {
-            expect(element).toContainText(textToSearch);
+            expect(element).toContainText(tests_data.test1.textToSearch);
         });
     });
 });
