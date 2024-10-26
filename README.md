@@ -10,7 +10,7 @@
 ## Installation
 To install Playwright for the first time, run:
 
-➡️ npm init playwright@latest
+➡️ npm install
 
 To install all the Allure dependencies, run:
 
